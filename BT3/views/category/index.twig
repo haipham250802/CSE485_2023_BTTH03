@@ -1,0 +1,41 @@
+{% extends 'layout.twig' %}
+{% block title %}<title>Thông tin các thể loại</title>{% endblock %}
+{% block content %}
+	<main
+		class="container mt-5 mb-5">
+		<!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+		<div class="row">
+			<div class="col-sm">
+				<a href="index.php?controller=category&action=add" class="btn btn-success">Thêm mới</a>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Mã thể loại</th>
+							<th scope="col">Tên thể loại</th>
+							<th>Sửa</th>
+							<th>Xóa</th>
+						</tr>
+					</thead>
+					{% for category in categories %}
+						<tbody>
+							<tr>
+								<th scope="row">{{category['ma_tloai']}}</th>
+								<td>{{category['ten_tloai']}}</td>
+								<td>
+									<a href="./index.php?controller=category&action=edit&ma_tloai={{category['ma_tloai']}}&ten_tloai={{category['ten_tloai']}}" class="btn btn-primary">
+										<i class="fas fa-edit"></i>
+									</a>
+								</td>
+								<td>
+									<a href="./index.php?controller=category&action=delete&ma_tloai={{category['ma_tloai']}}" class="btn btn-danger">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+{% endblock %}

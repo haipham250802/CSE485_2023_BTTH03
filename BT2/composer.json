@@ -1,0 +1,23 @@
+{
+    "name": "ngoc/bt2",
+    "autoload": {
+        "psr-4": {
+            "Ngoc\\Bt2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nguyễn Xuân Ngọc",
+            "email": "84265122+baitaptoan53@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+    
+}

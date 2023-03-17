@@ -1,0 +1,14 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<h2>Edit user</h2>
+<form action="" method="POST">
+    <label for="id">Id</label>
+    <input type="text" id="id" name="id" value="{{id}}" readonly>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+    <input type="submit" value="Edit User">
+</form>
+{% endblock %}
