@@ -1,0 +1,33 @@
+{% extends 'layout.twig'%}
+{% block content %}
+    <main class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-sm">
+            <h3 class="text-center text-uppercase fw-bold">Thông tin user</h3>
+            <a href="./index.php?controller=category&action=add" class="btn btn-success">Thêm mới</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Sửa</th>
+                        <th scope="col">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in users %}
+                      <tr>
+                                <th scope="row">{{member['id']}}</th>
+                                <td>{{member['name']}}</td>
+                                <td>{{member['email']}}</td>
+                                <td><a href="index.php?action=edit&id={{member['id']}} " class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="index.php?action=delete&id={{member['id']}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock %}
