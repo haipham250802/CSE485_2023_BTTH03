@@ -1,0 +1,66 @@
+{% extends "layout.twig" %}
+{% block title %}<title>Thông tin các bài viết</title>{% endblock %}
+{% block content %}
+	<main class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-sm">
+				<h3 class="text-center text-uppercase fw-bold">Thông tin các bài viết</h3>
+				<a href="./index.php?controller=article&action=add" class="btn btn-success">Thêm mới</a>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Mã bài viết</th>
+							<th scope="col">Tiêu đề
+							</th>
+							<th scope="col">Tên bài hát
+							</th>
+							<th scope="col">Mã thể loại
+							</th>
+							<th scope="col">Tóm tắt
+							</th>
+							<th scope="col">Nội dung
+							</th>
+							<th scope="col">Mã tác giả
+							</th>
+							<th scope="col">Ngày viết</th>
+							<th scope="col">Hình ảnh</th>
+							<th>Sửa</th>
+							<th>Xóa</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for article in articles %}
+                        {% if article['hinhanh'] != '' %}
+                            {% set img = article['hinhanh'] %}
+                        {% else %}
+                            {% set img = 'https://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon' %}
+                        {% endif %}
+                        
+						<tr>
+							<th scope="row">{{article['ma_bviet']}}</th>
+							<td scope="row">{{article['tieude']}}</td>
+							<td>{{article['ten_bhat']}}</td>
+							<td>{{article['ma_tloai']}}</td>
+							<td>{{article['tomtat']}}</td>
+							<td>{{article['noidung']}}</td>
+							<td>{{article['ma_tgia']}}</td>
+							<td>{{article['ngayviet']}}</td>
+							<td><img src="{{img}}" alt=""></td>
+							<td>
+								<a href="./index.php?controller=article&action=edit&ma_bviet={{article['ma_bviet']}}&ma_tloai={{article['ma_tloai']}}&ma_tgia={{article['ma_tgia']}}" class="btn btn-primary">
+									<i class="fas fa-edit"></i>
+								</a>
+							</td>
+							<td>
+								<a href="./index.php?controller=article&action=delete&ma_bviet={{article['ma_bviet']}}" class="btn btn-danger">
+									<i class="fas fa-trash-alt"></i>
+								</a>
+							</td>
+						</tr>
+                    {% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+{% endblock %}

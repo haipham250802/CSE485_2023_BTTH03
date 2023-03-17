@@ -1,0 +1,30 @@
+{% extends "layout.twig" %}
+{% block title %}
+	<title>Thêm tin tác giả</title>
+{% endblock %}
+{% block content %}
+	<main
+		class="container mt-5 mb-5">
+		<form action="" method="POST">
+			<div class="row">
+				<div class="col-sm">
+					<h3 class="text-center text-uppercase fw-bold">Thêm tác giả mới</h3>
+					<form action="" method="post">
+						<div class="input-group mt-3 mb-3">
+							<span class="input-group-text" id="lblCatName">Tên tác giả</span>
+							<input type="text" class="form-control" name="ten_tgia">
+						</div>
+						<div class="input-group mt-3 mb-3">
+							<span class="input-group-text" id="lblCatName">Hình ảnh</span>
+							<input type="file" class="form-control" name="hinh_tgia">
+						</div>
+						<div class="form-group  float-end ">
+							<input type="submit" value="Thêm" class="btn btn-success" name="add">
+							<a href="category.php" class="btn btn-warning ">Quay lại</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</form>
+	</main>
+{% endblock %}

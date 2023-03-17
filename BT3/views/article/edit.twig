@@ -1,0 +1,71 @@
+{% extends "layout.twig" %}
+{% block title %}<title>Sửa thông tin bài viết</title>{% endblock %}
+{% block content %}
+<main class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
+                <form action="" method="post">
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã bài viết</span>
+                        <input type="text" class="form-control" name="ma_bviet" readonly value="{{ma_bviet}}">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Tiêu đề</span>
+                        <input type="text" class="form-control" name="tieude" value="{{getIdArticle['tieude']}}">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Tên bài hát</span>
+                        <input type="text" class="form-control" name="ten_bhat" value="{{getIdArticle['ten_bhat']}}">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã thể loại</span>
+                        <select class="form-select" aria-label="Default select example" name="ma_tloai">
+                            {% for category in getAllCategory %}
+                                {% if category['ma_tloai'] == ma_tloai %}
+                                    {% set isSelected = 'selected' %}
+                                {% else %}
+                                    {% set isSelected = '' %}
+                                {% endif %}
+                                <option {{isSelected}} value="{{category['ma_tloai']}}">{{category['ma_tloai']}}-{{category['ten_tloai']}} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Tóm tắt</span>
+                        <textarea type="text" class="form-control" name="tomtat">{{getIdArticle['tomtat']}}</textarea>
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Nội dung</span>
+                        <textarea type="text" class="form-control" name="noidung">{{getIdArticle['noidung']}}</textarea>
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã tác giả</span>
+                        <select class="form-select" aria-label="Default select example" name="ma_tgia">
+                            {% for author in getAllAuthor %}
+                                {% if author['ma_tgia'] == ma_tgia %}
+                                    {% set isSelected = 'selected' %}
+                                {% else %}
+                                    {% set isSelected = '' %}
+                                {% endif %}
+                                <option {{isSelected}}  value="{{author['ma_tgia']}}">{{author['ma_tgia']}}-{{author['ten_tgia']}}</option>
+                            {% endfor %} 
+                        </select>
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Ngày viết</span>
+                        <input type="datetime-local" class="form-control" name="ngayviet" value="{{getIdArticle['ngayviet']}}">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Hình ảnh</span>
+                        <input type="file" class="form-control" name="hinhanh" value="{{getIdArticle['hinhanh']}}">
+                    </div>
+                    <div class="form-group  float-end ">
+                        <input type="submit" value="Lưu lại" class="btn btn-success" name ="edit">
+                        <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

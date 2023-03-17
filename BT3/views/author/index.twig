@@ -1,0 +1,49 @@
+{% extends "layout.twig" %}
+{% block title %}<title>Thông tin các tác giả</title>{% endblock %}
+{% block content %}
+<main class="container mt-5 mb-5">
+        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+        <div class="row">
+            <div class="col-sm">
+			    <h3 class="text-center text-uppercase fw-bold">Thông tin thể loại</h3>
+                <a href="./index.php?controller=author&action=add" class="btn btn-success">Thêm mới</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã tác giả</th>
+                            <th scope="col">Tên tác giả</th>
+                            <th scope="col">Hình ảnh</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           {% for author in authors %}
+                                {% if author['hinh_tgia'] != '' %}
+                                    {% set img = author['hinh_tgia'] %}
+                                {% else %}
+                                    {% set img = 'https://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon' %}
+                                {% endif %}
+                                <tr>
+                                    <th scope="row">{{author['ma_tgia']}}</th>
+                                    <td>{{author['ten_tgia']}}</td>
+                                    <td><img src="{{img}}" alt=""></td>
+                                    <td>
+                                        <a href="./index.php?controller=author&action=edit&ma_tgia={{author['ma_tgia']}}&ten_tgia={{author['ten_tgia']}}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="./index.php?controller=author&action=delete&ma_tgia={{author['ma_tgia']}}" class="btn btn-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                           {% endfor %}
+                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}
